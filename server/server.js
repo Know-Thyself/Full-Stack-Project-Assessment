@@ -1,12 +1,13 @@
 const express = require('express')
 const { Client } = require('pg')
+const path = require('path')
 const dotenv = require('dotenv')
 dotenv.config({ path: '../.env' })
 const app = express()
-
 const port = process.env.PORT || 7000
 
 app.use(express.json())
+app.use(express.static(path.resolve(__dirname, '../client/build')))
 
 const client = new Client({
 	connectionString: process.env.DATABASE_URL,
