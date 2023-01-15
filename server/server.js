@@ -4,7 +4,7 @@ const dotenv = require('dotenv')
 dotenv.config({ path: '../.env' })
 const app = express()
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 7000
 
 app.use(express.json())
 

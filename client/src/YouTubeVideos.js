@@ -19,7 +19,7 @@ const YouTubeVideos = () => {
   const [successAlert, setSuccessAlert] = useState(false);
 
   useEffect(() => {
-    fetch('https://fullstackvideos.herokuapp.com/api')
+    fetch('/api')
       .then(res => res.json())
       .then((data) => {
         setVideos(data);
@@ -29,7 +29,7 @@ const YouTubeVideos = () => {
   }, []);
 
   const ascendingOrder = () => {
-    fetch('https://fullstackvideos.herokuapp.com/api/?order=asc')
+    fetch('/api/?order=asc')
       .then((res) => res.json())
       .then((data) => {
         setVideos(data);
@@ -38,7 +38,7 @@ const YouTubeVideos = () => {
   };
 
   const descendingOrder = () => {
-    fetch('https://fullstackvideos.herokuapp.com/api/?order=desc')
+    fetch('/api/?order=desc')
       .then((res) => res.json())
       .then((data) => {
         setVideos(data);
@@ -71,7 +71,7 @@ const YouTubeVideos = () => {
       (video) => video.id !== id
     );
     setVideos(remainingVideos);
-    fetch(`https://fullstackvideos.herokuapp.com/api/${id}`, {
+    fetch(`/api/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
