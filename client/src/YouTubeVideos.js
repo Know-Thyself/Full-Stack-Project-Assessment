@@ -55,23 +55,19 @@ const YouTubeVideos = () => {
 	}
 
 	const addNewVideo = (title, url, rating) => {
-		let newArray = videos
-		newArray = [
-			{
-				id: Date.now(),
-				title: title,
-				url: url,
-				rating: rating,
-				posted: new Date().toString(),
-			},
-			...newArray,
-		]
+		let newVideo = {
+			id: Date.now(),
+			title: title,
+			url: url,
+			rating: rating,
+			posted: new Date().toString(),
+		}
 		setSuccessAlert(true)
 		const hideSuccessAlert = () => {
 			setSuccessAlert(false)
 		}
 		setTimeout(hideSuccessAlert, 5000)
-		return setVideos(newArray)
+		return setVideos((current) => current.concat(newVideo))
 	}
 
 	const videoRemover = (id) => {
